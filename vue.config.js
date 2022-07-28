@@ -35,8 +35,14 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
+    },
+    proxy: {
+      // 当地址中有 /api 时就会出发代理机制
+      '/api': {
+        target: 'http://ihrm.itheima.net/', // 要代理的服务器地址不需要带/api
+        changeOrigin: true // 是否跨域
+      }
     }
-    // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
