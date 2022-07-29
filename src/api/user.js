@@ -9,15 +9,21 @@ import request from '@/utils/request'
 //   })
 // }
 
-export const login = data => request({
+export const loginAPI = data => request({
   url: '/sys/login',
   method: 'post',
   data
 })
 
-export function getInfo(token) {
+export const getUserInfoAPI = () => request({
+  url: '/sys/profile',
+  method: 'post'
+})
 
-}
+export const getUserDetailByIdAPI = id => request({
+  url: `/sys/user/${id}`,
+  method: 'get'
+})
 
 export function logout() {
 

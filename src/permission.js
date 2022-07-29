@@ -12,7 +12,7 @@ import 'nprogress/nprogress.css'
 const whiteList = ['/login', '/404']
 
 // 导航的前置守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach(async(to, from, next) => {
   // 开启进度条
   nprogress.start()
   // next是前置守卫必须要执行的钩子，next必须要执行，不执行 页面就死了next（false）
@@ -21,6 +21,9 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login') {
       next('/')
     } else {
+      if (!store.getters.userId) {
+        await store.dispatch('user/getUserInfo') // 这里使用await将异步代码变成同步代码
+      }
       next()
     }
   } else {
