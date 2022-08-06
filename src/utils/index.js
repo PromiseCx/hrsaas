@@ -115,3 +115,23 @@ export function param2Obj(url) {
   })
   return obj
 }
+
+/**
+ * 将列表数据转化为树形数据
+ * 使用递归算法，自身调用自身时条件不能一样，否则会死循环
+ * 遍历树形，要先找到头儿,这里根节点的pid为‘’
+ */
+export function tranListToTreeData(list, rootValue) {
+  var arr = []
+  list.forEach(item => {
+    if (item.pid === rootValue) {
+      // 找到根节点之后，要看看item下面是否有子节点,递归解决
+      const children = tranListToTreeData(list, item.id)
+      if (children.length > 0) {
+        item.children = children
+      }
+      arr.push(item)
+    }
+  })
+  return arr
+}
