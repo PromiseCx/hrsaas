@@ -17,6 +17,14 @@ import '@/permission' // permission control
 
 import * as directives from '@/directives'
 
+import components from '@/components'
+Vue.use(components)
+
+import * as filters from '@/filters'
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 Object.keys(directives).forEach(key => {
   Vue.directive(key, directives[key])
 })
