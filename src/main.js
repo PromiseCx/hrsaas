@@ -20,6 +20,10 @@ import * as directives from '@/directives'
 import components from '@/components'
 Vue.use(components)
 
+// 所有组件都有一个混入对象方法
+import checkPermission from './mixin/checkPermission'
+Vue.mixin(checkPermission)
+
 import * as filters from '@/filters'
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])

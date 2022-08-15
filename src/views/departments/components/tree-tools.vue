@@ -19,10 +19,10 @@
               <i class="el-icon-arrow-down" />
             </span>
             <el-dropdown-menu v-if="isRoot" slot="dropdown">
-              <el-dropdown-item command="add">添加子部门</el-dropdown-item>
+              <el-dropdown-item command="add" :disabled="checkPermission('aa')">添加子部门</el-dropdown-item>
             </el-dropdown-menu>
             <el-dropdown-menu v-else slot="dropdown">
-              <el-dropdown-item command="add">添加子部门</el-dropdown-item>
+              <el-dropdown-item command="add" :disabled="checkPermission('aa')">添加子部门</el-dropdown-item>
               <el-dropdown-item command="edit">编辑部门</el-dropdown-item>
               <el-dropdown-item command="delete">删除部门</el-dropdown-item>
             </el-dropdown-menu>

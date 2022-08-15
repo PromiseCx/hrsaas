@@ -5,7 +5,7 @@ import Layout from '@/layout'
 // 单一的路由规则是一个对象，所有的路由规则是一个数组
 export default {
   path: '/permission',
-  name: 'permission',
+  name: 'permissions',
   component: Layout,
   children: [{
     path: '',

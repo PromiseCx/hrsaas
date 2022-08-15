@@ -1,5 +1,6 @@
 import { getToken, setToken, removeToken, setTimeStamp } from '@/utils/auth'
 import { loginAPI, getUserInfoAPI, getUserDetailByIdAPI } from '@/api/user'
+import { resetRouter } from '@/router'
 
 const state = {
   token: getToken(), // vuex的持久化，vuex初始化在本地缓存中获取
@@ -43,6 +44,14 @@ const actions = {
     context.commit('removeToken')
     // delete userinfo
     context.commit('removeUserInfo')
+    // 重置路由
+    resetRouter()
+    // 设置permissio中的路由为初始状态
+    // vuex中子模块调用子模块的action，只有在两模块都不加锁的时候可以随意调用
+    // 不加命名空间时，所有mutatios和actions都是挂在全局上的，所以可以直接调用
+    // 但是加了命名空间之后，context指的是模块的，而不是全局的
+    // 此时要，加第三个参数，{route：true}表示调用根级的mutat或者action
+    context.commit('permission/setRoutes', [], { root: true })
   }
 }
 

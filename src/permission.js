@@ -22,9 +22,17 @@ router.beforeEach(async(to, from, next) => {
       next('/')
     } else {
       if (!store.getters.userId) {
-        await store.dispatch('user/getUserInfo') // 这里使用await将异步代码变成同步代码
+        const { roles } = await store.dispatch('user/getUserInfo') // 这里使用await将异步代码变成同步代码
+        // 筛选用户的可用的动态路由
+        // async函数return的内容，用await接收
+        const routes = await store.dispatch('permission/filterRoutes', roles.menus)
+        // 动态路由添加到 路由表中
+        router.addRoutes([...routes, { path: '*', redirect: '/404', hidden: true }])
+        // 如果使用了addRoutes，不能用next，要用next（to.path）
+        next(to.path) //  相当于跳到对应的地址，相当于多做了一次跳转
+      } else {
+        next()
       }
-      next()
     }
   } else {
     if (whiteList.indexOf(to.path) > -1) {

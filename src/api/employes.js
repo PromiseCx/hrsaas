@@ -52,3 +52,9 @@ export const updateJobAPI = data => request({
   data
 })
 
+export const assignRolesAPI = data => request({
+  url: '/sys/user/assignRoles',
+  data,
+  method: 'put'
+})
+

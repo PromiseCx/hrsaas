@@ -30,3 +30,11 @@ export const addRoleAPI = data => request({
   method: 'post',
   data
 })
+
+export function assignPermAPI(data) {
+  return request({
+    url: '/sys/role/assignPrem',
+    method: 'put',
+    data
+  })
+}
