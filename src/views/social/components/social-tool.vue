@@ -23,7 +23,7 @@
 
 <script>
 import { getCityList } from '@/api/common'
-import { getDepartments } from '@/api/departments'
+import { getDepartmentsAPI } from '@/api/departments'
 
 export default {
   name: 'SocialTool',
@@ -49,7 +49,7 @@ export default {
     },
     // 获取组织架构
     async getDepartments() {
-      const { depts } = await getDepartments()
+      const { depts } = await getDepartmentsAPI()
       this.departmentList = depts
     },
     checkChange() {

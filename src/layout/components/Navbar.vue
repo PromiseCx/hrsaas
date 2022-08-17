@@ -8,7 +8,7 @@
 
     <!-- <breadcrumb class="breadcrumb-container" /> -->
     <div class="app-breadcrumb">
-      黑龙江大庆五维卓越软件开发中心
+      江苏传智播客教育股份有限公司
       <span class="breadBtn">体验版</span>
     </div>
 
