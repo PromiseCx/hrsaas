@@ -1,16 +1,37 @@
 
 import Layout from '@/layout'
 
-// 员工路由的规则
-// 单一的路由规则是一个对象，所有的路由规则是一个数组
-export default {
+const attendRouter = {
   path: '/attendances',
-  name: 'attendances',
   component: Layout,
-  children: [{
-    path: '',
-    component: () => import('@/views/attendances'),
-    // 路由的元信息，存储数据的地方
-    meta: { title: '考勤', icon: 'skill' } // 左侧导航会读取这里的title
-  }]
+  name: 'attendances',
+  children: [
+    {
+      path: '',
+      component: () => import('@/views/attendances'),
+      name: 'attendances',
+      meta: {
+        title: '考勤',
+        icon: 'excel' }
+    },
+    {
+      path: 'archiving',
+      component: () => import('@/views/attendances/historical'),
+      name: 'archiving',
+      hidden: true,
+      meta: {
+        title: '归档'
+      }
+    },
+    {
+      path: 'report/:month',
+      component: () => import('@/views/attendances/report'),
+      name: 'reports',
+      hidden: true,
+      meta: {
+        title: '报表'
+      }
+    }
+  ]
 }
+export default attendRouter

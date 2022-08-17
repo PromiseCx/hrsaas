@@ -1,16 +1,72 @@
-
 import Layout from '@/layout'
 
-// 员工路由的规则
-// 单一的路由规则是一个对象，所有的路由规则是一个数组
 export default {
   path: '/approvals',
-  name: 'approvals',
   component: Layout,
-  children: [{
-    path: '',
-    component: () => import('@/views/approvals'),
-    // 路由的元信息，存储数据的地方
-    meta: { title: '审批', icon: 'tree-table' } // 左侧导航会读取这里的title,图标读取icon
-  }]
+  name: 'approvals',
+  children: [
+    {
+      path: '',
+      component: () => import('@/views/approvals'),
+      name: 'approvals',
+      meta: {
+        title: '审批',
+        icon: 'tree-table'
+      }
+    },
+    {
+      path: 'salaryApproval/:id',
+      component: () => import('@/views/approvals/salary'),
+      name: 'salaryApproval',
+      hidden: true,
+      meta: {
+        title: '工资审核',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'enterApproval/:id',
+      component: () => import('@/views/approvals/enter'),
+      name: 'enterApproval',
+      hidden: true,
+      meta: {
+        title: '入职审核',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'leaveApproval/:id',
+      component: () => import('@/views/approvals/leave'),
+      name: 'leaveApproval',
+      hidden: true,
+      meta: {
+        title: '申请请假',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'quitApproval/:id',
+      component: () => import('@/views/approvals/quit'),
+      name: 'quitApproval',
+      hidden: true,
+      meta: {
+        title: '申请离职',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'overtimeApproval/:id',
+      component: () => import('@/views/approvals/overtime'),
+      name: 'overtimeApproval',
+      hidden: true,
+      meta: {
+        title: '加班申请',
+        icon: 'approval', noCache: true }
+    },
+    {
+      path: 'securitySetting',
+      component: () => import('@/views/approvals/security'),
+      name: 'securitySetting',
+      hidden: true,
+      meta: {
+        title: '设置',
+        icon: 'approval', noCache: true }
+    }
+  ]
 }

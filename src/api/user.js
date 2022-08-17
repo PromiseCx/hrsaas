@@ -25,6 +25,3 @@ export const getUserDetailByIdAPI = id => request({
   method: 'get'
 })
 
-export function logout() {
-
-}
