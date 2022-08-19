@@ -4,6 +4,8 @@ import PageTools from '@/components/PageTools'
 import UploadExcel from './UploadExcel'
 import ImageUpload from './ImageUpload'
 import Print from 'vue-print-nb'
+import ScreenFull from './ScreenFull'
+import ThemePicker from './ThemePicker'
 
 export default {
   // vue.use实际上是调用传入对象的install方法
@@ -12,5 +14,7 @@ export default {
     Vue.component('UploadExcel', UploadExcel)
     Vue.component('ImageUpload', ImageUpload)
     Vue.use(Print)
+    Vue.component('ScreenFull', ScreenFull)
+    Vue.component('ThemePicker', ThemePicker)
   }
 }

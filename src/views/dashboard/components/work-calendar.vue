@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped >
 /deep/ .el-calendar-day {
   height:  auto;
  }

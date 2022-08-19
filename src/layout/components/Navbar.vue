@@ -13,6 +13,8 @@
     </div>
 
     <div class="right-menu">
+      <screen-full class="right-menu-item" />
+      <theme-picker class="right-menu-item" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img v-imageerror="defaultImg" :src="staffPhoto" class="user-avatar">
@@ -127,10 +129,10 @@ export default {
     .right-menu-item {
       display: inline-block;
       padding: 0 8px;
+      vertical-align: middle;
       height: 100%;
       font-size: 18px;
       color: #5a5e66;
-      vertical-align: text-bottom;
 
       &.hover-effect {
         cursor: pointer;
